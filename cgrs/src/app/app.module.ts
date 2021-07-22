@@ -7,6 +7,7 @@ import { GamesTableComponent } from './games-table/games-table.component';
 import { CategoriesService } from './services/categories.service';
 import { GamesService } from './services/games.service';
 import { UserRegistrationComponent } from './user-registration/user-registration/user-registration.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UserRegistrationComponent } from './user-registration/user-registration
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [
     CategoriesService,
