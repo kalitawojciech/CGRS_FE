@@ -1,0 +1,4 @@
+<p *ngIf='games.length == 0'>loading</p>
+<ul *ngFor='let game of games'>
+    <li>{{game.name}} - {{game.description}}</li>
+</ul>
