@@ -6,23 +6,35 @@ import { AppComponent } from './app.component';
 import { GamesTableComponent } from './games-table/games-table.component';
 import { CategoriesService } from './services/categories.service';
 import { GamesService } from './services/games.service';
-import { UserRegistrationComponent } from './user-registration/user-registration/user-registration.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UsersService } from './services/users.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularMaterialModule } from './angular-material.module';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
     GamesTableComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ReactiveFormsModule,
+    AngularMaterialModule,
+    FormlyModule.forRoot({ extras: { lazyRender: true } }),
+    FormlyMaterialModule,
+    FormlyMatDatepickerModule
   ],
   providers: [
     CategoriesService,
-    GamesService
+    GamesService,
+    UsersService,
   ],
   bootstrap: [AppComponent]
 })
