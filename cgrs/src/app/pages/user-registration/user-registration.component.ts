@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core'
-import { IRegisterUserPayload } from '../models/payloads/register-user.payload';
+import { IRegisterUserPayload } from '../../models/payloads/register-user.payload';
 
-import { UsersService } from '../services/users.service';
+import { UsersService } from '../../services/users.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -52,7 +52,7 @@ export class UserRegistrationComponent implements OnInit {
         required: true,
       }
     }
-  ]
+  ];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -71,6 +71,9 @@ export class UserRegistrationComponent implements OnInit {
       .subscribe({
         next: () => {
           console.log('dupa');
+        },
+        error: (err) => {
+          console.log(err);
         }
       });
   }

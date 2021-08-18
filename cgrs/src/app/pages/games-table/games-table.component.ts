@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { IGame } from '../models/game';
-import { GamesService } from '../services/games.service';
+import { IGame } from '../../models/game';
+import { GamesService } from '../../services/games.service';
 
 @Component({
   selector: 'app-games-table',
@@ -22,7 +22,4 @@ export class GamesTableComponent implements OnInit {
       }
     })
   }
-
-
-
 }

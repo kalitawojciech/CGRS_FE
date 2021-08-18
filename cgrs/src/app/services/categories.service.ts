@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../environments/environment';
 import { ICategory } from '../models/category';
 
 @Injectable({
@@ -12,6 +12,22 @@ export class CategoriesService {
   constructor(private http: HttpClient) { }
 
   getAllCategories(): Observable<ICategory[]> {
-    return this.http.get<ICategory[]>(environment.apiUrl + 'category');
+    return this.http.get<ICategory[]>(environment.apiUrl + 'categories');
+  }
+
+  getCategoryById(id: string): Observable<ICategory> {
+    return this.http.get<ICategory>(environment.apiUrl + 'categories/' + id);
+  }
+
+  addCategory(catgory: any) {
+    return this.http.post(environment.apiUrl + 'categories', catgory);
+  }
+
+  updateCategory(catgory: any) {
+    return this.http.put(environment.apiUrl + 'categories', catgory);
+  }
+
+  deleteCategory(id: string) {
+    return this.http.delete<ICategory>(environment.apiUrl + 'categories/' + id);
   }
 }

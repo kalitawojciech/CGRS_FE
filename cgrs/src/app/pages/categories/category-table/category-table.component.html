@@ -1,0 +1,5 @@
+<ul *ngFor='let category of categories'>
+    <li>{{category.name}} - {{category.description}}</li>
+    <a mat-button [routerLink]="['edit/', category.id]">Edit</a>
+    <button mat-button (click)="deleteCategory(category.id)">Delete</button>
+</ul>
