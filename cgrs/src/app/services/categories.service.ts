@@ -28,6 +28,6 @@ export class CategoriesService {
   }
 
   deleteCategory(id: string) {
-    return this.http.delete<ICategory>(environment.apiUrl + 'categories/' + id);
+    return this.http.delete(environment.apiUrl + 'categories/' + id);
   }
 }

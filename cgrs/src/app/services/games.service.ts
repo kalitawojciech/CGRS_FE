@@ -14,4 +14,16 @@ export class GamesService {
   getGames(): Observable<IGame[]> {
     return this.http.get<IGame[]>(environment.apiUrl + 'games');
   }
+
+  addGame(game: any) {
+    return this.http.post(environment.apiUrl + 'games', game);
+  }
+
+  updateGame(game: any) {
+    return this.http.put(environment.apiUrl + 'games', game);
+  }
+
+  deleteGame(id: string) {
+    return this.http.delete(environment.apiUrl + 'games/' + id);
+  }
 }

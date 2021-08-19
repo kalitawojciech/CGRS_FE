@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -10,7 +9,7 @@ import { FormlyMaterialModule } from '@ngx-formly/material';
 import { FormlyMatDatepickerModule } from '@ngx-formly/material/datepicker';
 
 import { AppComponent } from './app.component';
-import { GamesTableComponent } from './pages/games-table/games-table.component';
+import { GamesTableComponent } from './pages/games/games-table/games-table.component';
 import { CategoriesService } from './services/categories.service';
 import { GamesService } from './services/games.service';
 import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
@@ -21,6 +20,8 @@ import { CreateCategoryComponent } from './pages/categories/create-category/crea
 import { EditCategoryComponent } from './pages/categories/edit-category/edit-category.component';
 import { CategoryTableComponent } from './pages/categories/category-table/category-table.component';
 import { AppRoutingModule } from './app-routing.module';
+import { AddGameComponent } from './pages/games/add-game/add-game.component';
+import { EditGameComponent } from './pages/games/edit-game/edit-game.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,8 @@ import { AppRoutingModule } from './app-routing.module';
     CreateCategoryComponent,
     EditCategoryComponent,
     CategoryTableComponent,
+    AddGameComponent,
+    EditGameComponent,
   ],
   imports: [
     BrowserModule,
