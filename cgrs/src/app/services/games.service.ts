@@ -11,6 +11,10 @@ export class GamesService {
 
   constructor(private http: HttpClient) { }
 
+  getGameById(id: string): Observable<IGame> {
+    return this.http.get<IGame>(environment.apiUrl + 'games/' + id);
+  }
+
   getGames(): Observable<IGame[]> {
     return this.http.get<IGame[]>(environment.apiUrl + 'games');
   }

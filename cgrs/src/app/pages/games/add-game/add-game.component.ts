@@ -42,7 +42,7 @@ export class AddGameComponent implements OnInit {
       key: 'categoryId',
       type: 'select',
       templateOptions: {
-        Category: 'Game category',
+        label: 'Game category',
         options: this.categoriesService.getAllCategories().pipe(map(categories => {return categories})),
         valueProp: 'id',
         labelProp: 'name',
