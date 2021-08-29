@@ -1,0 +1,15 @@
+<div>
+    <mat-toolbar *ngIf="!currentUser">
+        <a mat-flat-button routerLink="register" color="games">Register</a>
+        <a mat-flat-button routerLink="login" color="games">Login</a>
+    </mat-toolbar>
+    <mat-toolbar  *ngIf="currentUser">
+        <mat-toolbar-row>
+            <a mat-flat-button routerLink="game" color="games">Games</a>
+            <a mat-flat-button routerLink="game/new">New Game</a>
+            <a mat-flat-button routerLink="categories" *ngIf="isAdmin">Categories</a>
+            <a mat-flat-button routerLink="categories/new" *ngIf="isAdmin">New category</a>
+            <a mat-flat-button (click)="logout()">Logout</a>
+        </mat-toolbar-row>
+    </mat-toolbar>
+</div>

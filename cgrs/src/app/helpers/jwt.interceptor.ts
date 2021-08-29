@@ -8,18 +8,18 @@ import { environment } from "../../environments/environment";
 export class JwtInterceptor implements HttpInterceptor {
     constructor(private usersService: UsersService) { }
 
-    // intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    //     const currentUser = this.usersService.currentUserValue;
-    //     const isLogedIn = currentUser && currentUser.token;
-    //     const isApiUrl = request.url.startsWith(environment.apiUrl);
-    //     if (isLogedIn && isApiUrl) {
-    //         request = request.clone({
-    //             setHeaders: {
-    //                 Authorization: `Bearer ${currentUser.token}`
-    //             }
-    //         });
-    //     }
+    intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+        const currentUser = this.usersService.currentUserValue;
+        const isLogedIn = currentUser && currentUser.token;
+        const isApiUrl = request.url.startsWith(environment.apiUrl);
+        if (isLogedIn && isApiUrl) {
+            request = request.clone({
+                setHeaders: {
+                    Authorization: `Bearer ${currentUser.token}`
+                }
+            });
+        }
 
-    //     return next.handle(request);
-    // }
+        return next.handle(request);
+    }
 }

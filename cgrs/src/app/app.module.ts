@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -22,6 +22,9 @@ import { CategoryTableComponent } from './pages/categories/category-table/catego
 import { AppRoutingModule } from './app-routing.module';
 import { AddGameComponent } from './pages/games/add-game/add-game.component';
 import { EditGameComponent } from './pages/games/edit-game/edit-game.component';
+import { JwtInterceptor } from './helpers/jwt.interceptor';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +37,8 @@ import { EditGameComponent } from './pages/games/edit-game/edit-game.component';
     CategoryTableComponent,
     AddGameComponent,
     EditGameComponent,
+    NavbarComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +52,7 @@ import { EditGameComponent } from './pages/games/edit-game/edit-game.component';
     AppRoutingModule,
   ],
   providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     CategoriesService,
     GamesService,
     UsersService,

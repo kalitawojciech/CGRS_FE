@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
+import { Subscription } from 'rxjs';
 import { UsersService } from '../../services/users.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { UsersService } from '../../services/users.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  sub!: Subscription;
   form = new FormGroup({});
   model = {};
   options: FormlyFormOptions = {};
@@ -26,6 +29,7 @@ export class LoginComponent implements OnInit {
       key: 'password',
       type: 'input',
       templateOptions: {
+        type: 'password',
         label: 'Password',
         placeholder: 'Enter password',
         required: true,
@@ -33,7 +37,9 @@ export class LoginComponent implements OnInit {
     }
   ];
 
-  constructor(   
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private usersService: UsersService
     ) { }
@@ -43,5 +49,18 @@ export class LoginComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.model);
+
+    this.sub = this.usersService
+      .authenticateUser(this.model)
+      .pipe()
+      .subscribe({
+        next: res => {
+          this.router.navigate(['game']);
+        },
+        error: err => {
+          console.log(err);
+        }
+        
+      })
   }
 }

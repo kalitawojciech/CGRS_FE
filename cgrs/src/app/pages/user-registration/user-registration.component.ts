@@ -47,6 +47,7 @@ export class UserRegistrationComponent implements OnInit {
       key: 'password',
       type: 'input',
       templateOptions: {
+        type: 'password',
         label: 'Password',
         placeholder: 'Enter password',
         required: true,

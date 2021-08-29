@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
+import { Role } from './models/role';
 
 import { CategoryTableComponent } from './pages/categories/category-table/category-table.component';
 import { CreateCategoryComponent } from './pages/categories/create-category/create-category.component';
@@ -9,18 +11,57 @@ import { EditGameComponent } from './pages/games/edit-game/edit-game.component';
 import { GamesTableComponent } from './pages/games/games-table/games-table.component';
 import { LoginComponent } from './pages/login/login.component';
 import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
 
 const appRoutes: Routes = [
-  { path: '', component: UserRegistrationComponent },
-  { path: 'register', component: UserRegistrationComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'category/edit/:id', component: EditCategoryComponent },
-  { path: 'category/new', component: CreateCategoryComponent },
-  { path: 'category', component: CategoryTableComponent },
-  { path: 'game/edit/:id', component: EditGameComponent },
-  { path: 'game/new', component: AddGameComponent },
-  { path: 'game', component: GamesTableComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full'}
+  {
+    path: '',
+    component: MainPageComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'register',
+    component: UserRegistrationComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+  },
+  {
+    path: 'category/edit/:id',
+    component: EditCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
+  },
+  {
+    path: 'category/new',
+    component: CreateCategoryComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
+  },
+  {
+    path: 'category',
+    component: CategoryTableComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'game/edit/:id',
+    component: EditGameComponent,
+    canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
+  },
+  {
+    path: 'game/new',
+    component: AddGameComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'game',
+    component: GamesTableComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: '**', redirectTo: '', pathMatch: 'full'}
 ];
 
 @NgModule({
