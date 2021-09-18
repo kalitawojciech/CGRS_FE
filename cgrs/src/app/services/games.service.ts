@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IGame } from '../models/game';
+import { GameFilter } from '../models/game-filter';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,11 @@ export class GamesService {
     return this.http.get<IGame>(environment.apiUrl + 'games/' + id);
   }
 
-  getGames(): Observable<IGame[]> {
-    return this.http.get<IGame[]>(environment.apiUrl + 'games');
+  getGames(filter: any): Observable<IGame[]> {
+    const headers = { 'Content-Type': 'application/json' };
+    console.log(filter);
+    const params = { ...filter }
+    return this.http.get<IGame[]>(environment.apiUrl + 'games', { headers, params });
   }
 
   addGame(game: any) {
@@ -27,7 +31,7 @@ export class GamesService {
     return this.http.put(environment.apiUrl + 'games', game);
   }
 
-  deleteGame(id: string) {
-    return this.http.delete(environment.apiUrl + 'games/' + id);
+  changeGameStatus(id: string) {
+    return this.http.put(environment.apiUrl + 'games/change-status/' + id, { });
   }
 }

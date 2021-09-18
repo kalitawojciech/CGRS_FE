@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
       .pipe()
       .subscribe({
         next: res => {
-          this.router.navigate(['game']);
+          this.router.navigate(['/']);
         },
         error: err => {
           console.log(err);

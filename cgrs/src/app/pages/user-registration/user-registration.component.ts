@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms'
+import { Router } from '@angular/router';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core'
 import { IRegisterUserPayload } from '../../models/payloads/register-user.payload';
 
@@ -56,6 +57,7 @@ export class UserRegistrationComponent implements OnInit {
   ];
 
   constructor(
+    private router: Router,
     private formBuilder: FormBuilder,
     private usersService: UsersService
   ) { }
@@ -71,7 +73,7 @@ export class UserRegistrationComponent implements OnInit {
       .pipe()
       .subscribe({
         next: () => {
-          console.log('dupa');
+          this.router.navigate(['/login']);
         },
         error: (err) => {
           console.log(err);

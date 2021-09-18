@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { ICategory } from '../../../models/category';
 import { CategoriesService } from '../../../services/categories.service';
@@ -10,16 +12,32 @@ import { CategoriesService } from '../../../services/categories.service';
 })
 export class CategoryTableComponent implements OnInit {
   sub!: Subscription;
+  displayedColumns: string[] = ['name', 'description', 'edit', 'status', 'delete'];
 
   categories: ICategory[] = [];
+  dataSource: MatTableDataSource<ICategory>;
+  isLoadingResults: boolean = true;
+  resultsCount: number;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
-    private categoriesService: CategoriesService) { }
+    private categoriesService: CategoriesService) { 
+      this.getCategories();
+    }
 
   ngOnInit(): void {
+
+  }
+
+  getCategories(): void {
     this.sub = this.categoriesService.getAllCategories().subscribe({
       next: categories => {
         this.categories = categories;
+        this.dataSource = new MatTableDataSource<ICategory>(this.categories);
+        this.isLoadingResults = false;
+        this.resultsCount = categories.length;
+        this.dataSource.paginator = this.paginator;
       },
       error: err => {
       }
@@ -32,6 +50,14 @@ export class CategoryTableComponent implements OnInit {
       next: () => {
       },
       error: err => {
+      }
+    })
+  }
+
+  changeCategoryStatus(id: string): void {
+    this.sub = this.categoriesService.changeCategoryStatus(id).subscribe({
+      next: () => {
+        this.getCategories();
       }
     })
   }

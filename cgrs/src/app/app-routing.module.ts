@@ -43,6 +43,7 @@ const appRoutes: Routes = [
     path: 'category',
     component: CategoryTableComponent,
     canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
   },
   {
     path: 'game/edit/:id',
@@ -54,11 +55,13 @@ const appRoutes: Routes = [
     path: 'game/new',
     component: AddGameComponent,
     canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
   },
   {
     path: 'game',
     component: GamesTableComponent,
     canActivate: [AuthGuard],
+    data: { roles: [Role.Admin] }
   },
   {
     path: '**', redirectTo: '', pathMatch: 'full'}

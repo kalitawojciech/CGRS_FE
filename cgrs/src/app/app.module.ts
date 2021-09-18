@@ -25,6 +25,10 @@ import { EditGameComponent } from './pages/games/edit-game/edit-game.component';
 import { JwtInterceptor } from './helpers/jwt.interceptor';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { ErrorInterceptor } from './helpers/error.interceptor';
+import { AddGameMarkComponent } from './pages/main-page/add-game-mark/add-game-mark.component';
+import { EditGameMarkComponent } from './pages/main-page/edit-game-mark/edit-game-mark.component';
+import { GameMarkService } from './services/game-mark.service';
 
 @NgModule({
   declarations: [
@@ -39,6 +43,8 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
     EditGameComponent,
     NavbarComponent,
     MainPageComponent,
+    AddGameMarkComponent,
+    EditGameMarkComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,10 +59,12 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     CategoriesService,
     GamesService,
     UsersService,
+    GameMarkService,
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

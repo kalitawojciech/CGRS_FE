@@ -8,6 +8,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
 
 const sharedModules = [
   MatButtonModule,
@@ -18,7 +20,9 @@ const sharedModules = [
   MatSelectModule,
   MatToolbarModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
+  MatProgressSpinnerModule,
+  MatDialogModule,
 ]
 
 @NgModule({

@@ -30,4 +30,8 @@ export class CategoriesService {
   deleteCategory(id: string) {
     return this.http.delete(environment.apiUrl + 'categories/' + id);
   }
+
+  changeCategoryStatus(id: string) {
+    return this.http.put(environment.apiUrl + 'categories/change-status/' + id, { });
+  }
 }
