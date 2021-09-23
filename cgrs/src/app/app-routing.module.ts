@@ -12,6 +12,7 @@ import { GamesTableComponent } from './pages/games/games-table/games-table.compo
 import { LoginComponent } from './pages/login/login.component';
 import { UserRegistrationComponent } from './pages/user-registration/user-registration.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import { RecommendedGamesComponent } from './pages/games/recommended-games/recommended-games.component';
 
 const appRoutes: Routes = [
   {
@@ -50,6 +51,11 @@ const appRoutes: Routes = [
     component: EditGameComponent,
     canActivate: [AuthGuard],
     data: { roles: [Role.Admin] }
+  },
+  {
+    path: 'recommended',
+    component: RecommendedGamesComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'game/new',

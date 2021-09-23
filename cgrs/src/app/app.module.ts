@@ -29,6 +29,7 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { AddGameMarkComponent } from './pages/main-page/add-game-mark/add-game-mark.component';
 import { EditGameMarkComponent } from './pages/main-page/edit-game-mark/edit-game-mark.component';
 import { GameMarkService } from './services/game-mark.service';
+import { RecommendedGamesComponent } from './pages/games/recommended-games/recommended-games.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { GameMarkService } from './services/game-mark.service';
     MainPageComponent,
     AddGameMarkComponent,
     EditGameMarkComponent,
+    RecommendedGamesComponent,
   ],
   imports: [
     BrowserModule,

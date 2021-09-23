@@ -23,6 +23,10 @@ export class GamesService {
     return this.http.get<IGame[]>(environment.apiUrl + 'games', { headers, params });
   }
 
+  getRecommendedGames(): Observable<IGame[]> {
+    return this.http.get<IGame[]>(environment.apiUrl + 'games/recommended',);
+  }
+
   addGame(game: any) {
     return this.http.post(environment.apiUrl + 'games', game);
   }
