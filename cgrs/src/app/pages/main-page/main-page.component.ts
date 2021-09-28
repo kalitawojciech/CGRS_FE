@@ -15,7 +15,7 @@ import { EditGameMarkComponent } from './edit-game-mark/edit-game-mark.component
 })
 export class MainPageComponent implements AfterViewInit {
   sub!: Subscription;
-  displayedColumns: string[] = ['name', 'description', 'avgScore', 'updateScore'];
+  displayedColumns: string[] = ['name', 'description', 'avgScore', 'updateScore', 'details'];
   games: IGame[] = [];
   dataSource: MatTableDataSource<IGame>;
   resultsCount: number;

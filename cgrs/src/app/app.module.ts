@@ -29,7 +29,11 @@ import { ErrorInterceptor } from './helpers/error.interceptor';
 import { AddGameMarkComponent } from './pages/main-page/add-game-mark/add-game-mark.component';
 import { EditGameMarkComponent } from './pages/main-page/edit-game-mark/edit-game-mark.component';
 import { GameMarkService } from './services/game-mark.service';
+import { GameCommentService } from './services/game-comment.service';
 import { RecommendedGamesComponent } from './pages/games/recommended-games/recommended-games.component';
+import { GameDetailsComponent } from './pages/games/game-details/game-details.component';
+import { AddCommentComponent } from './pages/games/game-details/add-comment/add-comment.component';
+import { EditCommentComponent } from './pages/games/game-details/edit-comment/edit-comment.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +51,9 @@ import { RecommendedGamesComponent } from './pages/games/recommended-games/recom
     AddGameMarkComponent,
     EditGameMarkComponent,
     RecommendedGamesComponent,
+    GameDetailsComponent,
+    AddCommentComponent,
+    EditCommentComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +73,7 @@ import { RecommendedGamesComponent } from './pages/games/recommended-games/recom
     GamesService,
     UsersService,
     GameMarkService,
+    GameCommentService
   ],
   bootstrap: [AppComponent],
 })

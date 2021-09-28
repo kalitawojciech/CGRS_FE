@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { IGame } from '../models/game';
 import { GameFilter } from '../models/game-filter';
+import { IGamePopulated } from '../models/game-populated';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,10 @@ export class GamesService {
 
   getGameById(id: string): Observable<IGame> {
     return this.http.get<IGame>(environment.apiUrl + 'games/' + id);
+  }
+
+  getGameByIdPopulated(id: string): Observable<IGamePopulated> {
+    return this.http.get<IGamePopulated>(environment.apiUrl + 'games/' + id + '/populated');
   }
 
   getGames(filter: any): Observable<IGame[]> {

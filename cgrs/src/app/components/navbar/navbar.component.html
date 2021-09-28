@@ -4,7 +4,7 @@
         <a mat-flat-button routerLink="login" color="games">Login</a>
     </mat-toolbar>
     <mat-toolbar  *ngIf="currentUser" class="navbar">
-            <a mat-flat-button routerLink="game" color="games">Main Page</a>
+            <a mat-flat-button routerLink="/" color="games">Main Page</a>
             <a mat-flat-button routerLink="recommended" color="games">Recommended</a>
             <a mat-flat-button routerLink="game" color="games" *ngIf="isAdmin">Games</a>
             <a mat-flat-button routerLink="game/new" *ngIf="isAdmin">New Game</a>

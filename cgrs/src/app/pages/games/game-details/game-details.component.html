@@ -1,0 +1,47 @@
+<ng-container *ngIf="game$ | async as game">
+    <mat-card>
+        <mat-card-content>
+            <div fxLayout="column wrap">
+                <div fxLayout="row wrap" fxFlex>
+                    <div fxFlex><strong>Name</strong></div>
+                    <div fxFlx>{{game.name}}</div>
+                </div>
+
+                <div fxLayout="row wrap" fxFlex>
+                    <div fxFlex><strong>Description</strong></div>
+                    <div fxFlx>{{game.description}}</div>
+                </div>
+
+                
+                <div fxLayout="row wrap" fxFlex>
+                    <div fxFlex><strong>Average Score</strong></div>
+                    <div fxFlx>{{game.averageScore}}</div>
+                </div>
+
+                <div fxLayout="row wrap" fxFlex>
+                    <div fxFlex><strong>Category</strong></div>
+                    <div fxFlx>{{game.category.name}}</div>
+                </div>
+            </div>
+            <div class="add-comment">
+                <button mat-raised-button (click)="openAddGameCommentDialog(game.id)">Add Comment</button>
+            </div>
+        </mat-card-content>
+    </mat-card>
+    <div class="comments">
+        <mat-accordion *ngFor="let comment of game.gameComments">
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <b>{{comment.user.nick}}</b>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <p>{{comment.message}}</p>
+                <div *ngIf="currentUser.id == comment.user.id || currentUser.role == 'Admin'" class="edit-comment">
+                    <button mat-raised-button (click)="openEditGameCommentDialog(comment)">Edit Comment</button>
+                    <button mat-raised-button (click)="deleteComment(comment.id)">Delete Comment</button>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </div>
+</ng-container>
